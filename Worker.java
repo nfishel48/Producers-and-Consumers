@@ -1,4 +1,4 @@
-public class Producer implements Runnable {
+public class Worker implements Runnable{
     
     public void run() {
         try {
@@ -10,5 +10,4 @@ public class Producer implements Runnable {
             System.out.println("Exception is caught");
         }
     }
-
 }

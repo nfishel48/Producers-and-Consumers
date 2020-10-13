@@ -1,4 +1,9 @@
 public class Consumer implements Runnable{
+
+    char name;
+    public Consumer(char letter){
+        this.name = letter;
+    }
     
     public void run() {
         try {

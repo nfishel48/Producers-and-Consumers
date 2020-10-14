@@ -22,17 +22,20 @@ public class Producer implements Runnable {
     public void run() {
         try {
                 while(done > 0){
-                    Widget item = createWidget();
-                    item.workUpon();
-                    String handled = item.handledBy();
+                    Widget item = createWidget();//Create new object.
+
+                    item.workUpon();//Update the counter of the item.
+                    String handled = item.handledBy();//get a value for printing.
+
                     System.out.println("Worker "+name+" is working on widget"+item.name+" "+handled);
-                    Thread.sleep(rand = (int)(100 * Math.random() * range) + min );
+                    Thread.sleep(rand = (int)(100 * Math.random() * range) + min );//Sleep for random time.
+
                     if(queue.size() == 3){
                         System.out.println("WARNING: Worker "+name+" is waiting to put widget"+item.name+" "+handled+" on conveyer");
                     }
                     
                     System.out.println("Worker "+name+" is placing widget"+item.name+" "+handled+" on the belt");
-                    queue.enqueue(item);
+                    queue.enqueue(item);//Push item to buffer or block.
                     done--;
                 }
 

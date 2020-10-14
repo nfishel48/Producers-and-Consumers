@@ -20,14 +20,18 @@ public class Consumer implements Runnable{
                     if(queue.size() == 0){
                         System.out.println("WARNING: Worker "+name+" is idle!");
                     }
-                    Widget item = (Widget)queue.dequeue();
-                    String handled = item.handledBy();
+
+                    Widget item = (Widget)queue.dequeue();//Pull item from buffer or block
+                    String handled = item.handledBy();//Get value for ammount of workers that have acted on item.
+
                     System.out.println("Worker "+name+" is retrieving widget"+item.name+" "+handled+" from the belt");
-                    item.workUpon();
+                    item.workUpon();//Update item count
+
                     System.out.println("Worker "+name+" is working on widget"+item.name+" "+handled);
-                    Thread.sleep(rand = (int)(500 * Math.random() * range) + min );
+                    Thread.sleep(rand = (int)(500 * Math.random() * range) + min );//Sleep for random time.
                     done--;
                 }
+                System.out.println("Success! ALL WIDGETS CREATED");
 
             }
         

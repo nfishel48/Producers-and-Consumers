@@ -1,23 +1,34 @@
 import java.lang.*;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.*; 
 public class Producer implements Runnable {
     
     char name;
-     //define the range 
-     int max = 10; 
-     int min = 1; 
-     int range = max - min + 1; 
-     int rand;
-
-    public Producer(char letter){
-        this.name = letter;
-        this.rand = (int)(Math.random() * range) + min; 
+    int max = 10; 
+    int min = 1; 
+    int range = max - min + 1; 
+    int done = 24;
+    int rand;
+    int count = 1;
+    BoundedBuffer queue;
+    public Producer(char letter, BoundedBuffer conveyer){
+        this.name = letter;  
+        this.queue = conveyer;
     }
     
 
     public void run() {
         try {
-                Widget item = createWidget();
-                Thread.sleep(rand);
+                while(done > 0){
+                    Widget item = createWidget();
+                    item.workUpon();
+                    String handled = item.handledBy();
+                    System.out.println("Worker "+name+" is working on widget"+item.name+" "+handled);
+                    Thread.sleep(rand = (int)(500 * Math.random() * range) + min );
+                    queue.enqueue(item);
+                    done--;
+                }
 
             }
         
@@ -27,7 +38,8 @@ public class Producer implements Runnable {
         }
     }
     private Widget createWidget(){
-        Widget wig = new Widget();
+        Widget wig = new Widget(count);
+        count++;
         return wig;
     }
 

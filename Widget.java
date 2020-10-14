@@ -1,3 +1,12 @@
+/**
+ * Widget.java
+ *
+ * This class creates a object to be passed between threads via the bounded buffer.
+ *
+ * @author Nathaniel Fishel
+ * @version 1.0 - October 13 2020
+ *
+ */
 public class Widget extends Object{
     
     public int handled;

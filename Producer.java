@@ -1,7 +1,12 @@
-import java.lang.*;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.*; 
+/**
+ * Producer.java
+ *
+ * This class will be used to run a producer object.
+ *
+ * @author Nathaniel Fishel
+ * @version 1.0 - October 13 2020
+ *
+ */
 public class Producer implements Runnable {
     
     char name;

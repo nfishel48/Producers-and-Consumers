@@ -1,4 +1,13 @@
-
+/**
+ * Factory.java
+ *
+ * This is the driver class for an example of the producer consumer problem 
+ * implmenting a bounded buffer.
+ *
+ * @author Nathaniel Fishel
+ * @version 1.0 - October 13 2020
+ *
+ */
 public class Factory {
     
     public static void main(String[] args){

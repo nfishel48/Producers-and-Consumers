@@ -1,5 +1,14 @@
+/**
+ * BoundedBuffer.java
+ *
+ * This program implements the bounded buffer using Java synchronization.
+ *
+ * @author Nathaniel Fishel
+ * @version 1.0 - October 13 2020
+ * 
+ */
+
 import java.util.LinkedList;
-import java.util.Queue;
 import java.util.*; 
 
 public class BoundedBuffer {

@@ -1,3 +1,12 @@
+/**
+ * Consumer.java
+ *
+ * This class will be used to run a consumer object.
+ *
+ * @author Nathaniel Fishel
+ * @version 1.0 - October 13 2020
+ *
+ */
 public class Consumer implements Runnable{
     char name;
     int max = 10; 

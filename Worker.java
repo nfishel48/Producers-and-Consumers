@@ -1,3 +1,13 @@
+/**
+ * Worker.java
+ *
+ * This class will be used to run a consumer and producer object.
+ *
+ * @author Nathaniel Fishel
+ * @version 1.0 - October 13 2020
+ *
+ */
+
 public class Worker implements Runnable{
     char name;
     int max = 10; 
@@ -26,7 +36,7 @@ public class Worker implements Runnable{
 
                     Widget item = (Widget)queue.dequeue(); //Pull an item from the buffer or block.
                     String handled = item.handledBy(); //Get a value for how many workers have acted on this item
-                    
+
                     System.out.println("Worker "+name+" is retrieving widget"+item.name+" "+handled+" from the belt");
                     item.workUpon(); //Update the item counter
                     System.out.println("Worker "+name+" is working on widget"+item.name+" "+handled);

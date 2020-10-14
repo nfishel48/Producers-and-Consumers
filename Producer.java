@@ -12,6 +12,7 @@ public class Producer implements Runnable {
     int rand;
     int count = 1;
     BoundedBuffer queue;
+
     public Producer(char letter, BoundedBuffer conveyer){
         this.name = letter;  
         this.queue = conveyer;
@@ -25,7 +26,12 @@ public class Producer implements Runnable {
                     item.workUpon();
                     String handled = item.handledBy();
                     System.out.println("Worker "+name+" is working on widget"+item.name+" "+handled);
-                    Thread.sleep(rand = (int)(500 * Math.random() * range) + min );
+                    Thread.sleep(rand = (int)(100 * Math.random() * range) + min );
+                    if(queue.size() == 3){
+                        System.out.println("WARNING: Worker "+name+" is waiting to put widget"+item.name+" "+handled+" on conveyer");
+                    }
+                    
+                    System.out.println("Worker "+name+" is placing widget"+item.name+" "+handled+" on the belt");
                     queue.enqueue(item);
                     done--;
                 }
@@ -34,7 +40,7 @@ public class Producer implements Runnable {
         
         catch (final Exception e) {
             // Throwing an exception
-            System.out.println("Exception is caught");
+            System.out.println("Producer Exception is caught");
         }
     }
     private Widget createWidget(){

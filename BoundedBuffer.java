@@ -32,5 +32,9 @@ public class BoundedBuffer {
       
         return this.queue.remove(0); 
     } 
+
+    public int size(){
+        return this.queue.size();
+    }
     
 }

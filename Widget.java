@@ -1,6 +1,6 @@
-public class Widget {
+public class Widget extends Object{
     
-    public static int handled;
+    public int handled;
     public int name;
 
     public Widget(int num){
@@ -9,11 +9,11 @@ public class Widget {
     }
 
 
-    public static void workUpon(){
+    public void workUpon(){
         handled++;
     }
 
-    public static String handledBy(){
+    public String handledBy(){
         String convey;
         if(handled == 1)
             return convey ="<handled by A>";

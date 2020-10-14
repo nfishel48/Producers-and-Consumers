@@ -1,19 +1,45 @@
 public class Consumer implements Runnable{
-
     char name;
-    public Consumer(char letter){
-        this.name = letter;
+    int max = 10; 
+    int min = 1; 
+    int range = max - min + 1; 
+    int done = 24;
+    int rand;
+    int count = 1;
+    BoundedBuffer queue;
+    
+    public Consumer(char letter, BoundedBuffer conveyer){
+        this.name = letter;  
+        this.queue = conveyer;
     }
     
+
     public void run() {
         try {
-              
+                while(done > 0){
+                    if(queue.size() == 0){
+                        System.out.println("WARNING: Worker "+name+" is idle!");
+                    }
+                    Widget item = (Widget)queue.dequeue();
+                    String handled = item.handledBy();
+                    System.out.println("Worker "+name+" is retrieving widget"+item.name+" "+handled+" from the belt");
+                    item.workUpon();
+                    System.out.println("Worker "+name+" is working on widget"+item.name+" "+handled);
+                    Thread.sleep(rand = (int)(500 * Math.random() * range) + min );
+                    done--;
+                }
+
             }
         
         catch (final Exception e) {
             // Throwing an exception
-            System.out.println("Exception is caught");
+            System.out.println("Consumer Exception is caught");
         }
+    }
+    private Widget createWidget(){
+        Widget wig = new Widget(count);
+        count++;
+        return wig;
     }
     
 }
